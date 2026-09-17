@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff6500">
+<meta name="description" content="APROVAÇÃO 90 — Engenharia Reversa de Questões. O método prático para decodificar bancas examinadoras, estudar a teoria de trás para frente e acelerar sua aprovação em concursos públicos.">
+<title>APROVAÇÃO 90 | Engenharia Reversa de Questões</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2748725502210010');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2748725502210010&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<!-- Google Analytics 4 (gtag.js) - Se possuir ID do Google Analytics, insira no lugar de G-XXXXXXXXXX -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+-->
+<style>
+:root{
+  --orange:#ff6500;
+  --orange-light:#ff8a00;
+  --orange-glow:rgba(255,101,0,0.25);
+  --black:#080808;
+  --black-card:#121212;
+  --ink:#171717;
+  --white:#ffffff;
+  --paper:#f7f5f0;
+  --line:#e2ded6;
+  --muted:#66625b;
+  --green:#10b981;
+  --green-badge:#d1fae5;
+  --green-badge-text:#065f46;
+  --radius:20px;
+  --shadow:0 18px 50px rgba(0,0,0,.09);
+  --shadow-hover:0 24px 60px rgba(255,101,0,.22);
+  --max:1140px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block;height:auto}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+
+/* Tipografia e Elementos Base */
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.kicker:before{content:"";width:26px;height:3px;background:currentColor;border-radius:2px}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{line-height:1.06}
+
+/* Botões */
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:18px 28px;border-radius:999px;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.04em;transition:.25s all ease;cursor:pointer;border:none}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+.btn-orange{background:linear-gradient(135deg,#ff7200,#ff5400);color:#fff;box-shadow:0 10px 25px rgba(255,84,0,.35)}
+.btn-dark{background:#050505;color:#fff;box-shadow:0 10px 25px rgba(0,0,0,.3)}
+.btn-light{background:#fff;color:#0a0a0a;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.btn-full{width:100%}
+.note{font-size:.85rem;color:var(--muted)}
+
+/* Hero Section */
+.hero{
+  background:radial-gradient(circle at 85% 15%,rgba(255,180,0,.28),transparent 35%),
+  linear-gradient(140deg,#ff7700 0%,#ff5500 50%,#e64600 100%);
+  color:#fff;padding:24px 0 140px;position:relative;overflow:hidden
+}
+.hero:after{content:"";position:absolute;inset:auto -10% -200px -10%;height:320px;background:var(--paper);transform:rotate(-2deg);pointer-events:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:10px 0 45px;position:relative;z-index:10}
+
+/* Logo Marca */
+.brand-link{display:inline-flex;align-items:center;gap:14px;text-decoration:none}
+.brand-logo{height:52px;width:auto;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.2);transition:.25s transform ease}
+.brand-logo:hover{transform:scale(1.05)}
+
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:60px;align-items:center;position:relative;z-index:5}
+.badge-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.25);padding:7px 16px;border-radius:999px;font-size:.78rem;font-weight:800;letter-spacing:.05em;margin-bottom:16px;backdrop-filter:blur(6px)}
+.hero h1{font-size:clamp(2.5rem,5.2vw,5.2rem);letter-spacing:-.06em;margin:12px 0 20px;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:#080808;background:rgba(255,255,255,.25);padding:0 8px;border-radius:8px}
+.hero-sub{font-size:clamp(1.05rem,1.9vw,1.3rem);max-width:640px;line-height:1.55;opacity:.95}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:28px 0 20px}
+
+/* Destaque legível das bancas */
+.hero-feature-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(5,5,5,.6);
+  border:1px solid rgba(255,255,255,.3);
+  padding:10px 18px;
+  border-radius:999px;
+  color:#ffffff;
+  font-size:.92rem;
+  font-weight:600;
+  backdrop-filter:blur(8px);
+  box-shadow:0 6px 22px rgba(0,0,0,.25);
+  margin-top:5px;
+  max-width:100%
+}
+.hero-feature-pill strong{color:var(--orange-light)}
+.hero-feature-pill .pill-icon{font-size:1.1rem;line-height:1}
+
+.hero-cover{justify-self:center;max-width:420px;filter:drop-shadow(20px 30px 40px rgba(0,0,0,.38));transform:rotate(2.5deg);transition:.3s transform ease}
+.hero-cover:hover{transform:rotate(0deg) scale(1.02)}
+.hero-cover img{border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,.15);width:100%;height:auto}
+
+/* Faixa ticker */
+.band{padding:22px 0;background:#050505;color:#fff;overflow:hidden;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a}
+.ticker{display:flex;justify-content:space-around;gap:30px;white-space:nowrap;font-weight:900;text-transform:uppercase;letter-spacing:.1em;font-size:.84rem}.ticker span{color:var(--orange)}
+
+/* Seções Padrão */
+.black{background:var(--black);color:#fff;padding:100px 0}
+.white{background:#fff;padding:100px 0}
+.orange{background:linear-gradient(135deg,#ff6e00,#f54f00);color:#fff;padding:100px 0}
+.paper{background:var(--paper);padding:100px 0}
+
+.section-head{max-width:820px;margin-bottom:48px}
+.section-head h2{font-size:clamp(2.3rem,4.5vw,4.4rem);letter-spacing:-.055em;text-transform:uppercase;margin:12px 0 18px}
+.section-head p{font-size:1.15rem;color:rgba(255,255,255,.78);line-height:1.6}
+.white .section-head p,.paper .section-head p{color:var(--muted)}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+
+/* Problemas */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.problem{border:1px solid rgba(255,255,255,.14);background:#111;padding:34px 28px;border-radius:20px;position:relative;transition:.25s border-color}
+.problem:hover{border-color:var(--orange)}
+.problem strong{display:block;font-size:2.8rem;color:var(--orange);margin-bottom:10px;font-weight:1000;letter-spacing:-.04em}
+.problem h3{font-size:1.32rem;margin-bottom:10px;color:#fff}
+.problem p{color:#9ca3af;margin:0;font-size:1rem}
+
+/* Diagrama de Fluxo */
+.reverse{display:grid;grid-template-columns:.95fr 1.05fr;gap:65px;align-items:center}
+.diagram{background:#0a0a0a;color:#fff;border-radius:28px;padding:35px;box-shadow:var(--shadow);border:1px solid #222;position:relative;overflow:hidden}
+.diagram:before{content:"";position:absolute;width:280px;height:280px;border:1px dashed rgba(255,101,0,.35);border-radius:50%;right:-80px;top:-80px;pointer-events:none}
+.flow{display:grid;gap:15px;position:relative;z-index:2}
+.flow-item{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:center;padding:18px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.03);transition:.2s background}
+.flow-item:hover{background:rgba(255,101,0,.08);border-color:var(--orange)}
+.num{width:46px;height:46px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:1000;font-size:1.05rem}
+.flow-item b{display:block;font-size:1.1rem;margin-bottom:2px}.flow-item span{font-size:.9rem;color:#9ca3af}
+
+/* Cards Módulos / Capítulos */
+.cards-8{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card-cap{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 6px 20px rgba(0,0,0,.04);transition:.25s all}
+.card-cap:hover{transform:translateY(-3px);border-color:var(--orange);box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.card-tag{font-size:.72rem;font-weight:900;text-transform:uppercase;color:var(--orange);letter-spacing:.08em;margin-bottom:8px}
+.card-cap h3{font-size:1.18rem;letter-spacing:-.03em;margin-bottom:8px}
+.card-cap p{font-size:.88rem;color:var(--muted);margin:0;line-height:1.5}
+
+/* Bônus Box */
+.bonus-box{background:linear-gradient(135deg,#131313,#0a0a0a);color:#fff;border-radius:26px;border:2px solid var(--orange);padding:40px;margin-top:50px;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;box-shadow:0 20px 50px rgba(255,101,0,.15)}
+.bonus-tag{display:inline-block;background:var(--orange);color:#fff;font-weight:950;padding:5px 12px;border-radius:6px;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.bonus-box h3{font-size:1.8rem;letter-spacing:-.04em;margin-bottom:12px}
+.bonus-box p{color:#a1a1aa;font-size:1.02rem;margin-bottom:18px}
+.bonus-preview{background:#18181b;border:1px solid #27272a;border-radius:16px;padding:18px;font-family:monospace;font-size:.82rem;color:#e4e4e7;line-height:1.5}
+
+/* Tabela Comparativa */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:960px;margin:auto}
+.compare-card{padding:35px;border-radius:22px}
+.compare-bad{background:#fff;border:1px solid #fee2e2}
+.compare-good{background:#0c0c0c;color:#fff;border:2px solid var(--orange);box-shadow:0 15px 40px rgba(255,101,0,.15)}
+.compare-title{font-size:1.35rem;font-weight:900;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.compare-list{display:grid;gap:14px;padding:0;margin:0;list-style:none}
+.compare-list li{display:flex;gap:12px;align-items:flex-start;font-size:.98rem}
+.compare-bad li b{color:#ef4444;font-size:1.1rem;flex:none}
+.compare-good li b{color:var(--orange);font-size:1.1rem;flex:none}
+
+/* Citação */
+.quote{max-width:880px;margin:auto;text-align:center}
+.quote blockquote{font-size:clamp(1.6rem,3.8vw,3rem);font-weight:950;letter-spacing:-.04em;margin:0 0 20px;line-height:1.2}
+.quote cite{font-style:normal;color:var(--muted);font-weight:700;font-size:1rem}
+
+/* Caixa de Oferta */
+.offer{display:grid;grid-template-columns:1fr 430px;gap:55px;align-items:center}
+.offer-box{background:#fff;color:#111;border-radius:28px;padding:38px 32px;box-shadow:0 30px 80px rgba(0,0,0,.3);border:2px solid #0a0a0a;position:relative}
+.badge-save{position:absolute;top:-14px;right:25px;background:var(--green);color:#0a0a0a;font-weight:950;font-size:.78rem;padding:6px 14px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
+.price-label{text-transform:uppercase;font-weight:900;font-size:.78rem;color:#71717a;letter-spacing:.06em}
+.price-old{font-size:1.15rem;color:#a1a1aa;text-decoration:line-through;margin-top:6px}
+.price{font-size:4.2rem;font-weight:1000;letter-spacing:-.06em;line-height:1;margin:4px 0 10px;color:#0a0a0a}
+.price small{font-size:1.1rem;letter-spacing:0;color:#71717a;font-weight:800}
+.price-parcelas{font-size:.95rem;font-weight:700;color:var(--orange);margin-bottom:16px}
+.offer-list{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;margin:18px 0;display:grid;gap:11px;font-weight:700;font-size:.94rem}
+.offer-list div{display:flex;align-items:center;gap:8px}
+.offer-list div span{color:var(--orange);font-weight:900}
+
+/* Garantia */
+.guarantee-box{display:flex;align-items:center;gap:24px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px;max-width:880px;margin:50px auto 0;box-shadow:0 10px 30px rgba(0,0,0,.04)}
+.guarantee-badge{width:70px;height:70px;background:#050505;color:var(--orange);border-radius:50%;display:grid;place-items:center;font-size:1.8rem;font-weight:1000;flex:none}
+.guarantee-box h4{font-size:1.25rem;margin:0 0 6px}
+.guarantee-box p{margin:0;color:var(--muted);font-size:.95rem}
+
+/* FAQ */
+.faq{max-width:880px;margin:auto}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;margin:12px 0;padding:20px 24px;transition:.2s border-color}
+.faq details[open]{border-color:var(--orange)}
+.faq summary{cursor:pointer;font-weight:900;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:1.4rem;font-weight:700;color:var(--orange)}
+.faq details[open] summary:after{content:"−"}
+.faq p{margin:15px 0 0;color:var(--muted);font-size:1rem;line-height:1.6}
+
+/* Final CTA */
+.final{background:linear-gradient(135deg,#ff7500,#e84900);color:#fff;text-align:center;padding:110px 0}
+.final h2{font-size:clamp(2.8rem,6.5vw,5.6rem);letter-spacing:-.06em;text-transform:uppercase;margin:15px auto;max-width:880px}
+.final p{font-size:1.2rem;max-width:640px;margin:0 auto 35px;opacity:.95}
+
+footer{background:#050505;color:#a1a1aa;padding:40px 0 100px;font-size:.86rem;border-top:1px solid #1a1a1a}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.footer-brand{font-weight:1000;color:#fff;font-size:1.1rem}
+
+/* Sticky Bar */
+.sticky{position:fixed;left:0;right:0;bottom:0;background:rgba(5,5,5,.95);backdrop-filter:blur(14px);padding:10px 20px;z-index:50;border-top:1px solid #222;display:flex;justify-content:center;align-items:center;gap:16px}
+.sticky-info{color:#fff;font-size:.88rem;font-weight:800;display:flex;align-items:center;gap:10px}
+.sticky-info span{color:var(--orange)}
+
+@media(max-width:960px){
+ .cards-8{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:850px){
+ .hero-grid,.reverse,.offer,.bonus-box,.compare-grid{grid-template-columns:1fr;gap:40px}
+ .hero-cover{max-width:320px;order:-1}
+ .problem-grid{grid-template-columns:1fr}
+ .hero{padding-bottom:90px}.nav{padding-bottom:30px}
+ .black,.white,.orange,.paper{padding:75px 0}
+ .section-head{margin-bottom:32px}
+ .sticky-info{display:none}
+ .guarantee-box{flex-direction:column;text-align:center}
+}
+@media(max-width:520px){
+ .container{width:min(calc(100% - 30px),var(--max))}
+ .cards-8{grid-template-columns:1fr}
+ .hero h1{font-size:2.8rem}.hero-actions .btn{width:100%}
+ .price{font-size:3.4rem}
+ .hero-feature-pill{font-size:.85rem;padding:8px 14px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="inicio">
+  <div class="container">
+    <nav class="nav">
+      <!-- LOGO MARCA OFICIAL APROVAÇÃO 90 -->
+      <a href="#inicio" class="brand-link">
+          <img src="3aff2e71-882a-4952-a7ee-5034edf6cb2a.png" 
+             onerror="this.style.display='none'"
+             alt="Logo APROVAÇÃO 90" 
+             class="brand-logo">
+      </a>
+      <a class="btn btn-dark" href="#oferta">Garantir Acesso</a>
+    </nav>
+
+    <div class="hero-grid">
+      <div>
+        <div class="badge-tag">⚡ MÉTODO APROVAÇÃO 90 • ENGENHARIA REVERSA</div>
+        <h1>Você estuda horas de teoria… mas <em>trava</em> nas questões?</h1>
+        <p class="hero-sub">Descubra a <strong>Engenharia Reversa de Questões</strong>: o método prático para decodificar o padrão das bancas examinadoras, dominar a teoria de trás para frente e acelerar sua aprovação sem se afogar em PDFs infinitos.</p>
+        
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#oferta">Quero dominar o método</a>
+          <a class="btn btn-light" href="#como-funciona">Entender a lógica</a>
+        </div>
+
+        <!-- FRASE DE DESTAQUE COM ALTO CONTRASTE E LEITURA PERFEITA -->
+        <div class="hero-feature-pill">
+          <span class="pill-icon">🎯</span>
+          <span class="pill-text"><strong>Válido para qualquer banca:</strong> Cebraspe, FGV, FCC, Vunesp e bancas regionais.</span>
+        </div>
+      </div>
+
+      <!-- CAPA DO E-BOOK -->
+      <div class="hero-cover">
+        <img src="edited-photo.png" 
+             onerror="this.style.display='none'"
+             alt="Capa oficial do livro digital APROVAÇÃO 90 — Engenharia Reversa de Questões">
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="band">
+  <div class="container ticker">
+    <div>QUESTÃO <span>→</span> PADRÃO DA BANCA</div>
+    <div>PADRÃO DA BANCA <span>→</span> LEI SECA CIRÚRGICA</div>
+    <div>CADERNO DE ERROS ATIVO <span>→</span> APROVAÇÃO</div>
+  </div>
+</div>
+
+<section class="black">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker" style="color:var(--orange)">O Diagnóstico Real</div>
+   <h2>O problema não é sua memória. É o <span style="color:var(--orange)">estudo passivo.</span></h2>
+   <p>A maioria dos concurseiros cai na chamada "ilusão da familiaridade": ler 100 páginas de apostila e achar que aprendeu só porque achou o texto fácil.</p>
+  </div>
+  <div class="problem-grid">
+   <article class="problem">
+     <strong>01</strong>
+     <h3>A Ilusão da Teoria</h3>
+     <p>Horas de videoaulas e resumos coloridos dão a sensação confortável de dever cumprido. Mas no dia da prova, seu cérebro trava porque nunca foi treinado para recuperar a informação sob pressão.</p>
+   </article>
+   <article class="problem">
+     <strong>02</strong>
+     <h3>A Metralhadora de Cliques</h3>
+     <p>Resolver 200 questões de forma cega, apenas olhando se a tela ficou verde ou vermelha, sem catalogar os padrões que a banca repete em toda prova.</p>
+   </article>
+   <article class="problem">
+     <strong>03</strong>
+     <h3>O Cemitério de Resumos</h3>
+     <p>Cadernos de erros burocráticos de 300 páginas que você passa horas copiando e colando, mas que nunca mais abre para revisar.</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="white" id="como-funciona">
+ <div class="container reverse">
+   <div>
+    <div class="kicker">A Virada de Chave</div>
+    <h2 style="font-size:clamp(2.4rem,4.8vw,4.5rem);margin:15px 0">O examinador tem pavor de anulação. Use isso a seu favor.</h2>
+    <p style="font-size:1.12rem;color:var(--muted)">Bancas como Cebraspe, FGV e FCC não inventam a roda: elas usam <strong>a letra da lei seca, súmulas consolidadas e o mesmo tipo de pegadinha</strong> para blindar a prova contra recursos.</p>
+    <p style="font-size:1.12rem;color:var(--muted)">Na Engenharia Reversa, você estuda como um perito: desmonta a questão pronta, encontra a malícia do examinador e ancora a teoria exatamente onde ela é cobrada.</p>
+    <a class="btn btn-orange" href="#oferta">Quero aplicar na prática</a>
+   </div>
+   <div class="diagram">
+    <div class="flow">
+      <div class="flow-item"><div class="num">01</div><div><b>O COMANDO CIRÚRGICO</b><span>Isole o que a banca pede (literalidade, STF/STJ ou doutrina).</span></div></div>
+      <div class="flow-item"><div class="num">02</div><div><b>O TERMO CONTAMINADO</b><span>Encontre a palavra exata que estragou cada uma das 4 alternativas falsas.</span></div></div>
+      <div class="flow-item"><div class="num">03</div><div><b>A ANCORAGEM NA LEI</b><span>Vá direto no artigo cobrado e nos seus vizinhos imediatos.</span></div></div>
+      <div class="flow-item"><div class="num">04</div><div><b>O GATILHO NO CADERNO</b><span>Registre o erro em no máximo 3 linhas e revise em 15 minutos diários.</span></div></div>
+    </div>
+   </div>
+ </div>
+</section>
+
+<section class="paper">
+ <div class="container">
+  <div class="section-head center">
+   <div class="kicker">Conteúdo Completo</div>
+   <h2>O que você vai encontrar dentro do e-book</h2>
+   <p>Um manual enxuto, visual e direto ao ponto — sem enrolação acadêmica de 500 páginas.</p>
+  </div>
+
+  <div class="cards-8">
+   <article class="card-cap">
+     <div>
+       <div class="card-tag">Capítulo 01</div>
+       <h3>Convite a um Desmanche</h3>
+       <p>O fim do estudo passivo e por que tentar decorar a teoria antes de fazer questões é como aprender a ler pelo dicionário em vez da cartilha.</p>
+     </div>
+   </article>
+   <article class="card-cap">
+     <div>
+       <div class="card-tag">Capítulo 02</div>
+       <h3>A Fábrica das Bancas</h3>
+       <p>Como o examinador pensa, o medo da anulação e o truque mecânico das três peças trocadas (polaridade, família e absoluto).</p>
+     </div>
+   </article>
+   <article class="card-cap">
+     <div>
+       <div class="card-tag">Capítulo 03</div>
+       <h3>A Caixa de Ferramentas</h3>
+       <p>Os 4 Filtros de Ouro para minerar as plataformas de questões sem se afogar em milhares de itens inúteis.</p>
+     </div>
+   </article>
+   <article class="card-cap">
+     <div>
+       <div class="card-tag">Capítulo 04</div>
+       <h3>O Protocolo de Desmonte</h3>
+       <p>O passo a passo exato para dissecar qualquer questão até o osso e extrair o ouro de cada distrator.</p>
+     </div>
+   </article>
+   <article class="card-cap">
+     <div>
+       <div class="card-tag">Capítulo 05</div>
+       <h3>O Caderno de Erros Ativo</h3>
+       <p>Como diagnosticar seu erro em 3 gavetas e registrar o gatilho em 3 linhas com o ritual de revisão de 15 minutos.</p>
+     </div>
+   </article>
+   <article class="card-cap">
+     <div>
+       <div class="card-tag">Capítulo 06</div>
+       <h3>O DNA das Grandes Bancas</h3>
+       <p>Radiografia tática de Cebraspe (Certo/Errado), FGV (cansaço mental), FCC e Vunesp (lei seca absoluta).</p>
+     </div>
+   </article>
+   <article class="card-cap">
+     <div>
+       <div class="card-tag">Capítulo 07</div>
+       <h3>Rotina e Métricas</h3>
+       <p>O termômetro das três faixas (Vermelha, Amarela e Verde) e a estrutura ideal de sessão de 75 minutos.</p>
+     </div>
+   </article>
+   <article class="card-cap">
+     <div>
+       <div class="card-tag">Capítulo 08</div>
+       <h3>Plano de Ação de 7 Dias</h3>
+       <p>O cronograma diário, de segunda a domingo, para colocar o método para rodar a partir de amanhã.</p>
+     </div>
+   </article>
+  </div>
+
+  <div class="bonus-box">
+    <div>
+      <span class="bonus-tag">🎁 BÔNUS EXCLUSIVO INCLUSO</span>
+      <h3>O Examinador de Inteligência Artificial</h3>
+      <p>Vai fazer uma prova com lei municipal novíssima ou regimento interno sem questões na internet? Você recebe o <strong>Prompt Pronto de Engenharia Reversa com IA</strong> para gerar simulados inéditos e gabaritados sob medida.</p>
+      <a class="btn btn-orange" href="#oferta">Garantir com o Bônus</a>
+    </div>
+    <div class="bonus-preview">
+      <span style="color:var(--orange)">// Prompt pronto para copiar e colar:</span><br/>
+      "Atue como examinador sênior da banca [Banca]... Com base estrita na lei abaixo, elabore 5 questões com pegadinhas clássicas de inversão de prazos e competências..."
+    </div>
+  </div>
+ </div>
+</section>
+
+<section class="white">
+ <div class="container">
+  <div class="section-head center">
+   <div class="kicker">Comparativo</div>
+   <h2>Como você estuda hoje vs. Com a Engenharia Reversa</h2>
+  </div>
+  <div class="compare-grid">
+    <div class="compare-card compare-bad">
+      <div class="compare-title"><span style="color:#ef4444">✕</span> O Método Tradicional</div>
+      <ul class="compare-list">
+        <li><b>✕</b> Lê centenas de páginas de teoria antes de ver a cara da prova</li>
+        <li><b>✕</b> Fica preso na ilusão da familiaridade e esquece tudo na semana seguinte</li>
+        <li><b>✕</b> Resolve centenas de questões no piloto automático sem analisar os distratores</li>
+        <li><b>✕</b> Acumula resumos gigantescos que nunca são revisados</li>
+        <li><b>✕</b> Estuda sem métricas, oscilando entre ansiedade e desânimo</li>
+      </ul>
+    </div>
+    <div class="compare-card compare-good">
+      <div class="compare-title"><span style="color:var(--orange)">✓</span> Com a Engenharia Reversa</div>
+      <ul class="compare-list">
+        <li><b>✓</b> Começa pela questão para aprender o padrão real de cobrança</li>
+        <li><b>✓</b> Lê apenas a lei seca e a teoria necessárias para ancorar a dúvida</li>
+        <li><b>✓</b> Aprende com os 4 distratores falsos como o examinador monta armadilhas</li>
+        <li><b>✓</b> Caderno de Erros enxuto de 3 linhas revisado em 15 minutos diários</li>
+        <li><b>✓</b> Painel de bordo claro com metas para ultrapassar os 80% de acertos</li>
+      </ul>
+    </div>
+  </div>
+ </div>
+</section>
+
+<section class="black">
+ <div class="container">
+  <div class="quote">
+   <div class="kicker" style="color:var(--orange)">A Filosofia da Aprovação</div>
+   <blockquote>“Passar em concurso não é sobre quem lê mais páginas. É sobre <span style="color:var(--orange)">decodificar com precisão</span> o que o examinador vai cobrar no domingo de manhã.”</blockquote>
+   <cite>Método APROVAÇÃO 90</cite>
+  </div>
+ </div>
+</section>
+
+<section class="orange" id="oferta">
+ <div class="container offer">
+   <div>
+    <div class="kicker" style="color:#080808">OFERTA DE LANÇAMENTO</div>
+    <h2 style="font-size:clamp(2.8rem,5.5vw,5.2rem);margin:15px 0">Pare de perder meses no estudo passivo.</h2>
+    <p style="font-size:1.18rem;max-width:640px;line-height:1.6">Garanta acesso imediato ao e-book completo <strong>Engenharia Reversa de Questões</strong> + o <strong>Bônus de IA</strong> com valor promocional de lançamento.</p>
+    <div style="margin-top:20px">
+      <span class="badge-tag" style="background:#080808;color:#fff">🔒 Acesso imediato em formato PDF</span>
+    </div>
+   </div>
+   <div class="offer-box">
+     <div class="badge-save">63% de Desconto</div>
+     <div class="price-label">Livro Digital • Engenharia Reversa de Questões</div>
+     <div class="price-old">De R$ 67,00</div>
+     <div class="price">R$ 24<small>,90</small></div>
+     <div class="price-parcelas">ou 3x de R$ 8,80 no cartão</div>
+     <div class="offer-list">
+       <div><span>✓</span> E-book Digital Completo (PDF com 8 Capítulos)</div>
+       <div><span>✓</span> Guia do Caderno de Erros Ativo (Modelo Enxuto)</div>
+       <div><span>✓</span> Quadro Tático de Bancas (Cebraspe, FGV, FCC e Vunesp)</div>
+       <div><span>✓</span> BÔNUS: Prompt Pronto para Questões com IA</div>
+       <div><span>✓</span> Plano de Execução Prático de 7 Dias</div>
+     </div>
+     <!-- LINK DO CHECKOUT DA KIWIFY / HOTMART -->
+     <a class="btn btn-dark btn-full" href="https://pay.kiwify.com.br/9B0G7di" target="_blank">QUERO COMEÇAR AGORA</a>
+     <p class="note" style="text-align:center;margin:14px 0 0">⚡ Pagamento 100% seguro • Entrega imediata no seu e-mail</p>
+   </div>
+ </div>
+</section>
+
+<section class="paper">
+ <div class="container">
+  <div class="guarantee-box">
+    <div class="guarantee-badge">7</div>
+    <div>
+      <h4>Garantia Blindada de 7 Dias (Risco Zero)</h4>
+      <p>Leia o livro, teste o Protocolo de Desmonte e aplique a Engenharia Reversa por 7 dias. Se você achar que o método não mudou a sua forma de enxergar as questões, basta solicitar o reembolso na plataforma com um clique. Devolvemos 100% do seu dinheiro, sem burocracia.</p>
+    </div>
+  </div>
+
+  <div class="faq" style="margin-top:70px">
+    <div class="section-head center">
+     <div class="kicker">Tira-Dúvidas</div>
+     <h2>Perguntas Frequentes</h2>
+    </div>
+    <details><summary>Para quais carreiras e bancas o método serve?</summary><p>O método é universal porque foca na mecânica de construção das questões de concurso. Serve para carreiras policiais, tribunais, administrativas, fiscais e bancárias, com foco especial nas maiores bancas (Cebraspe, FGV, FCC, Vunesp e bancas regionais).</p></details>
+    <details><summary>Sou concurseiro iniciante, vou conseguir aplicar?</summary><p>Com certeza. Na verdade, quem começa pela Engenharia Reversa ganha meses de vantagem, pois evita o erro de ler centenas de páginas de teoria inútil que nunca é cobrada em prova.</p></details>
+    <details><summary>O método substitui o estudo da teoria e da lei seca?</summary><p>Não. Ele organiza o estudo: a teoria continua sendo essencial, mas deixa de ser um mar sem fim e passa a ser consultada de forma cirúrgica, guiada exatamente pelo que a banca exige.</p></details>
+    <details><summary>Como vou receber o livro digital?</summary><p>Assim que o pagamento for aprovado (no Pix ou Cartão é instantâneo), você receberá o link para download direto do arquivo PDF no seu e-mail e na tela de confirmação.</p></details>
+    <details><summary>Como funciona o bônus de Inteligência Artificial?</summary><p>O livro inclui um capítulo com um prompt testado para você copiar e colar em IAs gratuitas (como Gemini ou ChatGPT), transformando a ferramenta em um examinador particular para criar questões sobre matérias que ainda não têm questões nas plataformas.</p></details>
+  </div>
+ </div>
+</section>
+
+<section class="final">
+ <div class="container">
+   <div class="kicker" style="color:#080808;justify-content:center">APROVAÇÃO 90</div>
+   <h2>Pare de apenas resolver questões. Comece a <span style="color:#080808">decifrá-las.</span></h2>
+   <p>Descubra como os aprovados antecipam as pegadinhas e chegam à prova sabendo exatamente onde o examinador tentou esconder o erro.</p>
+   <a class="btn btn-dark" href="#oferta">QUERO GARANTIR MEU ACESSO</a>
+ </div>
+</section>
+
+<footer>
+ <div class="container footer-row">
+   <div style="display:flex;align-items:center;gap:14px">
+    <img src="3aff2e71-882a-4952-a7ee-5034edf6cb2a.png"
+      onerror="this.style.display='none'"
+          alt="Logo APROVAÇÃO 90" 
+          style="height:46px;width:auto;border-radius:8px;border:1px solid #262626">
+     <div>
+       <div class="footer-brand">APROVAÇÃO 90</div>
+       <div style="font-size:.84rem;color:#888">Engenharia Reversa de Questões para Concursos</div>
+     </div>
+   </div>
+   <div>© 2026 APROVAÇÃO 90 • Todos os direitos reservados.</div>
+ </div>
+</footer>
+
+<div class="sticky">
+    <img src="3aff2e71-882a-4952-a7ee-5034edf6cb2a.png"
+      onerror="this.style.display='none'"
+       alt="Logo" 
+       style="height:34px;width:auto;border-radius:6px;border:1px solid #333">
+ <div class="sticky-info">APROVAÇÃO 90 • <span>Engenharia Reversa de Questões</span> (R$ 24,90)</div>
+  <a class="btn btn-orange" style="padding:10px 22px;font-size:.86rem" href="#oferta">GARANTIR ACESSO</a>
+</div>
+
+<!-- Rastreamento de Eventos e Conversões (Meta Pixel) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Dispara InitiateCheckout quando o usuário clica no link do checkout da Kiwify
+    var checkoutLinks = document.querySelectorAll('a[href*="pay.kiwify.com.br"]');
+    checkoutLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (typeof fbq === 'function') {
+          fbq('track', 'InitiateCheckout', {
+            content_name: 'E-book Engenharia Reversa de Questões',
+            content_category: 'Concursos Públicos',
+            value: 24.90,
+            currency: 'BRL'
+          });
+        }
+      });
+    });
+
+    // Rastreia cliques nos botões de ação que rolam para a oferta
+    var ctaLinks = document.querySelectorAll('a[href="#oferta"]');
+    ctaLinks.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'ClickOfertaCTA', {
+            button_text: btn.innerText.trim()
+          });
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
